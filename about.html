@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — EDGARDO S. TEE</title>
+<meta name="description" content="About EDGARDO S. TEE — the author behind EDGARDO S. TEE, a collection of sayings, reflections, and essays on truth and meaning." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+
+<style>
+  /* About-page-only layout. Small enough that folding it into style.css
+     isn't worth it yet — if the site grows more static pages like this,
+     these rules should move into a shared section there. */
+  .about-hero {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    padding: var(--space-8) 0 var(--space-7);
+  }
+
+  .about-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 4rem;
+    box-shadow: var(--shadow-lg);
+    border: 6px solid var(--color-surface);
+    outline: 1px solid var(--color-border);
+  }
+
+  .about-block { padding: var(--space-7) 0; }
+  .about-block + .about-block { border-top: 1px solid var(--color-border); }
+
+  .about-block__grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-6);
+  }
+
+  .about-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin-top: var(--space-5);
+  }
+
+  .about-contact__item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .about-contact__label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .about-contact__value a { color: var(--color-accent); }
+  .about-contact__value a:hover { text-decoration: underline; }
+
+  .about-social {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+  .about-social a {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: all var(--transition-fast);
+  }
+  .about-social a:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+
+  @media (max-width: 700px) {
+    .about-hero { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .about-block__grid { grid-template-columns: 1fr; gap: var(--space-3); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================== NAV ============================== -->
+<header class="site-nav">
+  <div class="site-nav__inner">
+    <a href="index.html" class="site-nav__brand">
+      <span class="site-nav__title">EDGARDO S. TEE</span>
+      <span class="site-nav__tagline">Search for Truth and Meaning</span>
+    </a>
+
+    <nav class="site-nav__links" id="site-nav-links">
+      <a href="index.html">Home</a>
+      <a href="sayings.html">Sayings</a>
+      <a href="about.html" class="is-active">About</a>
+    </nav>
+
+    <div class="site-nav__actions">
+      <a href="login.html" class="btn btn--ghost btn--sm" data-nav-auth-link>Log In</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ============================== HERO: PHOTO + INTRO ============================== -->
+  <section class="about-hero reveal is-visible">
+    <!-- Replace with an <img src="assets/images/author.jpg" alt="EDGARDO S. TEE"> once a real photo is added -->
+    <img src="assets/images/SIR TEE.jpg" alt="Edgar Tee" class="about-photo" />
+    <div>
+      <p class="eyebrow">About the Author</p>
+      <h1 style="margin-top:var(--space-3);">EDGARDO S. TEE</h1>
+      <p class="lede" style="margin-top:var(--space-4);max-width:60ch;">
+        I write to figure things out — not to have already figured them out.
+        EDGARDO S. TEE is where those attempts end up: sayings collected slowly,
+        essays written honestly, and reflections shared for whoever finds
+        them useful.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== BIOGRAPHY ============================== -->
+  <section class="about-block reveal">
+    <div class="about-block__grid">
+      <h3>Biography</h3>
+      <div>
+        <p>
+          I've spent years paying closer attention to the small, quiet
+          moments that usually get skipped over — the ones that, looked at
+          directly, tend to hold more truth than the loud ones. That habit
+          turned into notes. The notes turned into this site.
+        </p>
+        <p>
+          I'm not a philosopher by training, just someone who reads widely,
+          asks more questions than I answer, and tries to write things down
+          plainly enough that they're actually useful to someone else, not
+          just to me.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== MISSION ============================== -->
+  <section class="about-block reveal">
+    <div class="about-block__grid">
+      <h3>Mission</h3>
+      <p class="lede">
+        To collect and share short, honest reflections that help people
+        think more clearly about how they live — without the noise, the
+        hustle, or the need to have all the answers.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== VISION ============================== -->
+  <section class="about-block reveal">
+    <div class="about-block__grid">
+      <h3>Vision</h3>
+      <p class="lede">
+        A small, growing commonplace book that outlasts any single post —
+        somewhere a stranger can land on one saying, at exactly the right
+        moment, and feel a little less alone in whatever they're working
+        through.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== PERSONAL PHILOSOPHY ============================== -->
+  <section class="about-block reveal">
+    <div class="about-block__grid">
+      <h3>Personal Philosophy</h3>
+      <div>
+        <blockquote style="font-size:var(--text-xl);color:var(--color-primary);margin-bottom:var(--space-4);">
+          "Say less, mean more."
+        </blockquote>
+        <p>
+          Most of what's worth saying can be said briefly. I'd rather write
+          one true sentence than ten clever ones. If something I write
+          doesn't hold up on a slow, second read, it probably wasn't ready
+          to be published in the first place.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CONTACT ============================== -->
+  <section class="about-block reveal">
+    <div class="about-block__grid">
+      <h3>Contact</h3>
+      <div>
+        <p>Have a thought to share, a correction, or just want to say hello?</p>
+        <div class="about-contact">
+          <div class="about-contact__item">
+            <span class="about-contact__label">Email</span>
+            <span class="about-contact__value"><a href="mailto:eetragde@gmail.com">eetragde@gmail.com</a></span>
+          </div>
+          <div class="about-contact__item">
+            <span class="about-contact__label">Based In</span>
+            <span class="about-contact__value">Wherever the next reflection finds me</span>
+          </div>
+        </div>
+
+        <div class="about-social">
+          <a href="#" aria-label="Twitter / X">X</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">LI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <span class="site-nav__title">EDGARDO S. TEE</span>
+        <span class="site-nav__tagline">Search for Truth and Meaning</span>
+        <p class="site-footer__desc">
+          A personal collection of sayings, reflections, and essays —
+          written slowly, shared honestly.
+        </p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul class="site-footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sayings.html">Sayings</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Categories</h4>
+        <ul class="site-footer__links">
+          <li><a href="sayings.html?category=philosophy">Philosophy</a></li>
+          <li><a href="sayings.html?category=life-lessons">Life Lessons</a></li>
+          <li><a href="sayings.html?category=inspiration">Inspiration</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Connect</h4>
+        <ul class="site-footer__links">
+          <li><a href="about.html">Contact</a></li>
+          <li><a href="#" rel="noopener">RSS Feed</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>&copy; <span data-current-year></span> EDGARDO S. TEE. All rights reserved.</span>
+      <div class="site-footer__social">
+        <a href="#" aria-label="Twitter / X">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
+  </svg>
+</button>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

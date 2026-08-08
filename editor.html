@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Editor — EDGAR TEE</title>
+<meta name="robots" content="noindex, nofollow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/editor.css" />
+</head>
+<body class="editor-body">
+
+<!-- ============================== TOP BAR ============================== -->
+<header class="editor-topbar">
+  <div class="editor-topbar__inner">
+    <div class="editor-topbar__left">
+      <a href="dashboard.html" class="editor-topbar__back">&larr; Dashboard</a>
+      <span class="editor-status-pill" data-editor-status-pill>Draft</span>
+    </div>
+
+    <div class="editor-topbar__actions">
+      <span class="editor-save-message" data-editor-save-message></span>
+      <button class="btn btn--ghost btn--sm" data-editor-preview>Preview</button>
+      <button class="btn btn--ghost btn--sm" data-editor-save-draft>Save Draft</button>
+      <button class="btn btn--primary btn--sm" data-editor-publish>Publish</button>
+    </div>
+  </div>
+</header>
+
+<div class="editor-shell">
+
+  <!-- ============================== CONTENT COLUMN ============================== -->
+  <div class="editor-content-col">
+    <div class="editor-field">
+      <input type="text" class="editor-title-input" placeholder="Post title…" data-editor-title />
+    </div>
+
+    <div class="editor-field">
+      <input type="text" class="editor-subtitle-input" placeholder="Subtitle (optional)…" data-editor-subtitle />
+    </div>
+
+    <hr class="editor-divider" />
+
+    <div class="editor-field">
+      <textarea class="editor-content-textarea" placeholder="Write your reflection here. Leave a blank line between paragraphs." data-editor-content></textarea>
+    </div>
+
+    <hr class="editor-divider" />
+
+    <div class="editor-field">
+      <label for="editor-excerpt">Short Preview / Excerpt</label>
+      <textarea id="editor-excerpt" class="editor-excerpt-input" rows="2" placeholder="Shown on cards and search results. Leave blank to auto-generate from the content." data-editor-excerpt></textarea>
+    </div>
+
+    <div class="editor-field">
+      <label for="editor-seo">SEO Description</label>
+      <textarea id="editor-seo" class="editor-seo-textarea" rows="2" placeholder="Shown in search engine results (aim for ~155 characters)." data-editor-seo></textarea>
+      <p class="editor-char-count" data-editor-seo-count>0 / 155 characters</p>
+    </div>
+  </div>
+
+  <!-- ============================== SIDEBAR ============================== -->
+  <aside class="editor-sidebar">
+
+    <div class="editor-panel">
+      <h3>Post Type</h3>
+      <div class="editor-post-type-toggle">
+        <button type="button" data-editor-post-type="article" class="is-active">Article</button>
+        <button type="button" data-editor-post-type="saying">Saying</button>
+      </div>
+    </div>
+
+    <div class="editor-panel">
+      <h3>Organize</h3>
+      <div class="editor-field">
+        <label for="editor-category">Category</label>
+        <select id="editor-category" class="editor-select" data-editor-category>
+          <option value="">Uncategorized</option>
+        </select>
+      </div>
+      <div class="editor-field">
+        <label for="editor-tags">Tags</label>
+        <input type="text" id="editor-tags" class="editor-text-input" placeholder="truth, growth, stillness" data-editor-tags />
+        <p class="editor-tag-hint">Comma-separated. New tags are created automatically.</p>
+      </div>
+    </div>
+
+    <div class="editor-panel">
+      <h3>Featured Image</h3>
+      <div class="editor-image-preview" data-editor-image-preview></div>
+      <label class="editor-image-drop">
+        <input type="file" accept="image/*" data-editor-image-input />
+        <span class="editor-image-drop__label" data-editor-image-label>Click to upload a featured image</span>
+      </label>
+      <a href="#" class="editor-image-remove" data-editor-image-remove>Remove image</a>
+    </div>
+
+    <div class="editor-panel">
+      <h3>Publish Settings</h3>
+      <div class="editor-field">
+        <label for="editor-date">Publish Date</label>
+        <input type="datetime-local" id="editor-date" class="editor-date-input" data-editor-date />
+      </div>
+      <div class="editor-field">
+        <label for="editor-reading-time">Reading Time (minutes)</label>
+        <input type="number" id="editor-reading-time" class="editor-text-input" min="1" data-editor-reading-time />
+      </div>
+      <div class="editor-field">
+        <label for="editor-slug">URL Slug</label>
+        <input type="text" id="editor-slug" class="editor-text-input" data-editor-slug />
+        <p class="editor-slug-preview" data-editor-slug-preview></p>
+      </div>
+      <div class="editor-field">
+        <div class="editor-toggle-row">
+          <span>Pin as Featured</span>
+          <label class="editor-switch">
+            <input type="checkbox" data-editor-featured-toggle />
+            <span class="editor-switch__track"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="editor-danger-zone">
+      <button class="btn btn--ghost btn--sm" data-editor-delete style="border-color:#c0392b;color:#c0392b;">Delete Post</button>
+    </div>
+
+  </aside>
+</div>
+
+<!-- ============================== PREVIEW MODAL ============================== -->
+<div class="preview-modal" data-preview-modal>
+  <div class="preview-modal__panel">
+    <button class="preview-modal__close" data-preview-close aria-label="Close preview">&times;</button>
+    <span class="preview-modal__badge">Preview &mdash; not yet saved</span>
+
+    <div class="article-image" data-preview-image style="display:none;max-width:100%;margin-bottom:var(--space-6);"></div>
+
+    <p class="eyebrow" style="justify-content:center;" data-preview-category>Category</p>
+    <h1 style="text-align:center;margin-top:var(--space-3);" data-preview-title>Title</h1>
+    <p class="article-header__subtitle" style="text-align:center;" data-preview-subtitle></p>
+    <p style="text-align:center;font-family:var(--font-sans);font-size:var(--text-sm);color:var(--color-muted);margin:var(--space-4) 0 var(--space-6);" data-preview-meta></p>
+
+    <div class="article-content" style="max-width:100%;" data-preview-content></div>
+  </div>
+</div>
+
+<script type="module" src="js/editor.js"></script>
+</body>
+</html>

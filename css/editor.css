@@ -1,0 +1,397 @@
+/* ============================================================================
+   editor.css — Post Editor Styles
+   EDGAR TEE
+
+   Reuses design tokens from style.css. Adds the writing-interface layout:
+   a wide content column (title/subtitle/body) plus a metadata sidebar
+   (category, tags, image, status, SEO, slug), and the preview modal.
+   Loaded only on editor.html, after style.css.
+   ============================================================================ */
+
+body.editor-body {
+  background: var(--color-bg-alt);
+  min-height: 100vh;
+}
+
+/* ----------------------------------------------------------------------------
+   Top bar
+   ---------------------------------------------------------------------------- */
+.editor-topbar {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.editor-topbar__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.editor-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.editor-topbar__back {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+.editor-topbar__back:hover { color: var(--color-primary); }
+
+.editor-status-pill {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 0.3em 0.9em;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-soft);
+  color: var(--color-primary);
+}
+
+.editor-topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.editor-save-message {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+/* ----------------------------------------------------------------------------
+   Layout
+   ---------------------------------------------------------------------------- */
+.editor-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-6) var(--space-9);
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+/* ----------------------------------------------------------------------------
+   Content column
+   ---------------------------------------------------------------------------- */
+.editor-field { margin-bottom: var(--space-5); }
+
+.editor-field label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: var(--space-2);
+}
+
+.editor-title-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  color: var(--color-primary);
+  padding: 0;
+  line-height: var(--leading-tight);
+}
+.editor-title-input:focus { outline: none; }
+.editor-title-input::placeholder { color: var(--color-muted-light); }
+
+.editor-subtitle-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+  padding: 0;
+  margin-top: var(--space-2);
+}
+.editor-subtitle-input:focus { outline: none; }
+.editor-subtitle-input::placeholder { color: var(--color-muted-light); }
+
+.editor-content-textarea {
+  width: 100%;
+  min-height: 480px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: var(--leading-loose);
+  color: var(--color-ink-soft);
+  resize: vertical;
+  padding: 0;
+}
+.editor-content-textarea:focus { outline: none; }
+.editor-content-textarea::placeholder { color: var(--color-muted-light); }
+
+.editor-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-6) 0;
+}
+
+.editor-excerpt-input,
+.editor-seo-textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  padding: 0.75em 1em;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  resize: vertical;
+}
+.editor-excerpt-input:focus,
+.editor-seo-textarea:focus { outline: none; border-color: var(--color-accent); }
+
+.editor-char-count {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-muted-light);
+  margin-top: var(--space-2);
+  text-align: right;
+}
+
+/* ----------------------------------------------------------------------------
+   Sidebar
+   ---------------------------------------------------------------------------- */
+.editor-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.editor-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.editor-panel h3 {
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: var(--space-4);
+}
+
+.editor-panel .editor-field:last-child { margin-bottom: 0; }
+
+.editor-select,
+.editor-text-input,
+.editor-date-input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  padding: 0.65em 0.9em;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+.editor-select:focus,
+.editor-text-input:focus,
+.editor-date-input:focus { outline: none; border-color: var(--color-accent); }
+
+.editor-post-type-toggle {
+  display: flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.editor-post-type-toggle button {
+  flex: 1;
+  border: none;
+  background: var(--color-surface);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: 0.6em 0;
+  color: var(--color-muted);
+  transition: all var(--transition-fast);
+}
+.editor-post-type-toggle button.is-active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.editor-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
+
+.editor-switch {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.editor-switch input { opacity: 0; width: 0; height: 0; }
+.editor-switch__track {
+  position: absolute; inset: 0;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+  cursor: pointer;
+}
+.editor-switch__track::before {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  left: 3px; top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+.editor-switch input:checked + .editor-switch__track { background: var(--color-primary); }
+.editor-switch input:checked + .editor-switch__track::before { transform: translateX(18px); }
+
+.editor-slug-preview {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  margin-top: var(--space-2);
+  word-break: break-all;
+}
+.editor-slug-preview strong { color: var(--color-accent); font-weight: 500; }
+
+/* Image upload */
+.editor-image-drop {
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+.editor-image-drop:hover { border-color: var(--color-accent); }
+.editor-image-drop input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+}
+.editor-image-drop__label {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+.editor-image-preview {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-sm);
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-bg-alt);
+  margin-bottom: var(--space-3);
+  display: none;
+}
+.editor-image-preview.has-image { display: block; }
+.editor-image-remove {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  margin-top: var(--space-2);
+  display: none;
+}
+.editor-image-remove.is-visible { display: inline-block; }
+
+.editor-tag-hint {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-muted-light);
+  margin-top: var(--space-2);
+}
+
+.editor-danger-zone {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+}
+
+/* ----------------------------------------------------------------------------
+   Preview Modal
+   ---------------------------------------------------------------------------- */
+.preview-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 35, 47, 0.55);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-7) var(--space-5);
+  z-index: 200;
+  overflow-y: auto;
+}
+.preview-modal.is-open { display: flex; }
+
+.preview-modal__panel {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  max-width: 800px;
+  width: 100%;
+  padding: var(--space-7) var(--space-6);
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.preview-modal__close {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  background: var(--color-bg-alt);
+  border: none;
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+}
+
+.preview-modal__badge {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-align: center;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+/* ----------------------------------------------------------------------------
+   Responsive
+   ---------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .editor-shell { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .editor-shell { padding: var(--space-5) var(--space-4) var(--space-7); }
+  .editor-title-input { font-size: var(--text-3xl); }
+  .editor-topbar__actions .btn span { display: none; }
+}

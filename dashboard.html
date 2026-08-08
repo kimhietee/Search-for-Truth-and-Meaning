@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — EDGAR TEE</title>
+<meta name="robots" content="noindex, nofollow" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body class="admin-body">
+
+<!-- ============================== ADMIN TOP BAR ============================== -->
+<header class="admin-topbar">
+  <div class="admin-topbar__inner">
+    <a href="index.html" class="site-nav__brand">
+      <span class="site-nav__title" style="font-size:var(--text-lg);">EDGAR TEE</span>
+      <span class="site-nav__tagline">Admin Dashboard</span>
+    </a>
+
+    <nav class="admin-topbar__nav">
+      <a href="#stats">Overview</a>
+      <a href="#manage-posts">Posts</a>
+      <a href="#taxonomy">Categories &amp; Tags</a>
+      <a href="index.html">View Site &rarr;</a>
+    </nav>
+
+    <div class="admin-topbar__user">
+      <span data-admin-name>Admin</span>
+      <div class="admin-avatar" data-admin-avatar>ET</div>
+      <button class="btn btn--ghost btn--sm" data-logout-btn>Log Out</button>
+    </div>
+  </div>
+</header>
+
+<main class="admin-main">
+
+  <div class="admin-heading">
+    <h1>Welcome back.</h1>
+    <p>Here's what's happening with EDGAR TEE.</p>
+  </div>
+
+  <!-- ============================== STATS ============================== -->
+  <section class="admin-section" id="stats">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-card__label">Total Posts</div>
+        <div class="stat-card__value" data-stat="posts">&mdash;</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__label">Total Categories</div>
+        <div class="stat-card__value" data-stat="categories">&mdash;</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__label">Total Views</div>
+        <div class="stat-card__value" data-stat="views">&mdash;</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__label">Quick Action</div>
+        <div class="stat-card__value" style="font-size:var(--text-lg);">
+          <a href="editor.html" class="btn btn--primary btn--sm">+ New Post</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== QUICK ACTIONS ============================== -->
+  <section class="admin-section">
+    <div class="admin-section__head"><h2>Quick Actions</h2></div>
+    <div class="quick-actions">
+      <a href="editor.html" class="quick-action">
+        <span class="quick-action__icon">&#9998;</span>
+        <span>
+          <span class="quick-action__title" style="display:block;">Write New Post</span>
+          <span class="quick-action__desc">Article or saying</span>
+        </span>
+      </a>
+      <a href="#manage-posts" class="quick-action">
+        <span class="quick-action__icon">&#128203;</span>
+        <span>
+          <span class="quick-action__title" style="display:block;">Manage Posts</span>
+          <span class="quick-action__desc">Edit, publish, pin, delete</span>
+        </span>
+      </a>
+      <a href="#taxonomy" class="quick-action">
+        <span class="quick-action__icon">&#127991;</span>
+        <span>
+          <span class="quick-action__title" style="display:block;">Categories &amp; Tags</span>
+          <span class="quick-action__desc">Organize your content</span>
+        </span>
+      </a>
+      <a href="index.html" class="quick-action">
+        <span class="quick-action__icon">&#8599;</span>
+        <span>
+          <span class="quick-action__title" style="display:block;">View Live Site</span>
+          <span class="quick-action__desc">See it as visitors do</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================== RECENT / DRAFT POSTS ============================== -->
+  <section class="admin-section">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+      <div>
+        <div class="admin-section__head"><h2>Recent Posts</h2></div>
+        <div class="mini-list" data-recent-posts></div>
+      </div>
+      <div>
+        <div class="admin-section__head"><h2>Draft Posts</h2></div>
+        <div class="mini-list" data-draft-posts></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== MANAGE POSTS ============================== -->
+  <section class="admin-section" id="manage-posts">
+    <div class="admin-section__head"><h2>Manage Posts</h2></div>
+
+    <div class="admin-toolbar">
+      <input type="search" placeholder="Search posts by title…" data-posts-search />
+      <select data-posts-status-filter>
+        <option value="">All Statuses</option>
+        <option value="published">Published</option>
+        <option value="draft">Draft</option>
+      </select>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody data-posts-table-body>
+          <tr><td colspan="6"><div class="empty-state">Loading posts&hellip;</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================== CATEGORIES & TAGS ============================== -->
+  <section class="admin-section" id="taxonomy">
+    <div class="admin-section__head"><h2>Categories &amp; Tags</h2></div>
+
+    <div class="manager-grid">
+      <div class="manager-panel">
+        <h3>Categories</h3>
+        <form class="manager-form" data-category-form>
+          <input type="text" placeholder="New category name…" required />
+          <button type="submit" class="btn btn--primary btn--sm">Add</button>
+        </form>
+        <div data-category-manager-list></div>
+      </div>
+
+      <div class="manager-panel">
+        <h3>Tags</h3>
+        <form class="manager-form" data-tag-form>
+          <input type="text" placeholder="New tag name…" required />
+          <button type="submit" class="btn btn--primary btn--sm">Add</button>
+        </form>
+        <div data-tag-manager-list></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

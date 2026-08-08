@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sayings — EDGAR TEE</title>
+<meta name="description" content="Browse every saying on EDGAR TEE — search, filter by category, and sort by newest or most loved." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<!-- ============================== NAV ============================== -->
+<header class="site-nav">
+  <div class="site-nav__inner">
+    <a href="index.html" class="site-nav__brand">
+      <span class="site-nav__title">EDGAR TEE</span>
+      <span class="site-nav__tagline">Search for Truth and Meaning</span>
+    </a>
+
+    <nav class="site-nav__links" id="site-nav-links">
+      <a href="index.html">Home</a>
+      <a href="sayings.html" class="is-active">Sayings</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div class="site-nav__actions">
+      <a href="login.html" class="btn btn--ghost btn--sm" data-nav-auth-link>Log In</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================== PAGE HEADER ============================== -->
+  <section class="page-header container">
+    <p class="eyebrow">The Full Collection</p>
+    <h1 class="page-header__title" data-sayings-heading>Sayings</h1>
+    <p class="lede">
+      Short reflections, collected one at a time. Search by keyword, filter
+      by theme, or just see what's newest.
+    </p>
+  </section>
+
+  <!-- ============================== TOOLBAR ============================== -->
+  <section class="container">
+    <div class="sayings-toolbar">
+      <div class="search-bar">
+        <svg class="search-bar__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="search" placeholder="Search sayings, articles, tags…" aria-label="Search" data-sayings-search />
+      </div>
+
+      <select class="toolbar-select" aria-label="Filter by type" data-sayings-type>
+        <option value="saying">Sayings</option>
+        <option value="article">Articles</option>
+        <option value="">All Content</option>
+      </select>
+
+      <select class="toolbar-select" aria-label="Filter by category" data-sayings-category>
+        <option value="">All Categories</option>
+      </select>
+
+      <select class="toolbar-select" aria-label="Sort by" data-sayings-sort>
+        <option value="newest">Newest First</option>
+        <option value="popular">Most Liked</option>
+        <option value="viewed">Most Viewed</option>
+        <option value="az">Title A&ndash;Z</option>
+      </select>
+    </div>
+
+    <p class="sayings-count" data-sayings-count></p>
+
+    <!-- ============================== GRID ============================== -->
+    <div class="grid grid--3" data-sayings-grid></div>
+
+    <!-- ============================== PAGINATION ============================== -->
+    <div class="pagination" data-sayings-pagination></div>
+  </section>
+
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <span class="site-nav__title">EDGAR TEE</span>
+        <span class="site-nav__tagline">Search for Truth and Meaning</span>
+        <p class="site-footer__desc">
+          A personal collection of sayings, reflections, and essays —
+          written slowly, shared honestly.
+        </p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul class="site-footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sayings.html">Sayings</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Categories</h4>
+        <ul class="site-footer__links">
+          <li><a href="sayings.html?category=philosophy">Philosophy</a></li>
+          <li><a href="sayings.html?category=life-lessons">Life Lessons</a></li>
+          <li><a href="sayings.html?category=inspiration">Inspiration</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Connect</h4>
+        <ul class="site-footer__links">
+          <li><a href="about.html">Contact</a></li>
+          <li><a href="#" rel="noopener">RSS Feed</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>&copy; <span data-current-year></span> Edgar Tee. All rights reserved.</span>
+      <div class="site-footer__social">
+        <a href="#" aria-label="Twitter / X">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
+  </svg>
+</button>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

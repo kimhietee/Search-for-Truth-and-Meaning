@@ -1,0 +1,171 @@
+/* ============================================================================
+   responsive.css — Breakpoints
+   EDGAR TEE
+
+   Mobile-first adjustments layered on top of style.css. Loaded after it on
+   every public page. Two breakpoints: tablet (<=960px) and mobile (<=600px).
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   Tablet — <= 960px
+   ---------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  :root {
+    --text-5xl: 2.75rem;
+    --text-4xl: 2.25rem;
+    --text-3xl: 1.9rem;
+  }
+
+  .container { padding: 0 var(--space-5); }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
+
+  .hero__intro { max-width: none; }
+
+  .grid--3, .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .saying-masonry { columns: 2; }
+
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: var(--space-6);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Mobile — <= 600px
+   ---------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  :root {
+    --text-5xl: 2.1rem;
+    --text-4xl: 1.9rem;
+    --text-3xl: 1.6rem;
+    --text-2xl: 1.4rem;
+    --nav-height: 68px;
+    --nav-height-scrolled: 56px;
+  }
+
+  .container { padding: 0 var(--space-4); }
+  .section { padding: var(--space-7) 0; }
+
+  /* Nav collapses to a hamburger; links move into a full-width dropdown */
+  .nav-toggle { display: flex; }
+
+  .site-nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: var(--space-2) var(--space-5) var(--space-4);
+    box-shadow: var(--shadow-md);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-med), opacity var(--transition-med);
+  }
+
+  .site-nav__links.is-open {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  .site-nav__links a {
+    width: 100%;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .site-nav__actions .btn span { display: none; }
+
+  .hero { padding: var(--space-7) 0 var(--space-6); }
+
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { width: 100%; }
+
+  .saying-feature { padding: var(--space-6) var(--space-4) var(--space-5); }
+  .saying-feature::before { font-size: 7rem; }
+  .saying-feature__quote { font-size: var(--text-xl); }
+
+  .search-bar {
+    max-width: none;
+    flex-wrap: wrap;
+    border-radius: var(--radius-md);
+  }
+  .search-bar input { width: 100%; order: 1; }
+  .search-bar button { order: 2; width: 100%; }
+
+  .grid--3, .grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .saying-masonry { columns: 1; }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .newsletter {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-6) var(--space-5);
+    text-align: left;
+  }
+  .newsletter__form { max-width: none; flex-direction: column; }
+
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-to-top {
+    right: var(--space-4);
+    bottom: var(--space-4);
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Sayings toolbar — added in Module 5
+   ---------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .sayings-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sayings-toolbar .search-bar { min-width: 0; }
+  .toolbar-select { width: 100%; }
+  .pagination { gap: var(--space-3); }
+}
+
+/* ----------------------------------------------------------------------------
+   Single Post page — added in Module 6
+   ---------------------------------------------------------------------------- */
+@media (max-width: 700px) {
+  .article-content { font-size: var(--text-base); }
+  .article-content p:first-of-type::first-letter { font-size: 2.8em; }
+}
+
+@media (max-width: 600px) {
+  .article-header { padding: var(--space-6) 0 var(--space-5); }
+  .article-actions { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+  .post-nav { grid-template-columns: 1fr; }
+  .post-nav__item--next { text-align: left; }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "edgar-tee",
+  "version": "1.0.0",
+  "description": "EDGAR TEE — Search for Truth and Meaning. A vanilla HTML/CSS/JS blog backed by Supabase, hosted on GitHub Pages.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/unit.test.js"
+  }
+}
